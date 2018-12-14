@@ -1,0 +1,14 @@
+127.0.0.1 - - [21/Jul/2018:21:05:12 +0900] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [21/Jul/2018:21:05:22 +0900] "GET /deliveryQR/connection_test.jsp HTTP/1.1" 200 316
+0:0:0:0:0:0:0:1 - - [21/Jul/2018:21:05:22 +0900] "GET /favicon.ico HTTP/1.1" 404 1085
+0:0:0:0:0:0:0:1 - - [21/Jul/2018:21:05:28 +0900] "GET /deliveryQR/connection_test.jsp HTTP/1.1" 200 316
+172.29.123.230 - - [21/Jul/2018:21:08:00 +0900] "GET /deliveryQR/connection_test.jsp HTTP/1.1" 200 316
+172.29.123.230 - - [21/Jul/2018:21:08:01 +0900] "GET /favicon.ico HTTP/1.1" 404 1085
+0:0:0:0:0:0:0:1 - - [21/Jul/2018:21:10:31 +0900] "GET /deliveryQR/connection_test.jsp HTTP/1.1" 500 2925
+172.29.123.230 - - [21/Jul/2018:21:10:54 +0900] "POST /deliveryQR/connection_test.jsp?userid=1&name=f06586cae58e7717 HTTP/1.1" 200 316
+127.0.0.1 - - [21/Jul/2018:21:20:25 +0900] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [21/Jul/2018:21:20:26 +0900] "GET /deliveryQR/connection_test.jsp HTTP/1.1" 500 2500
+127.0.0.1 - - [21/Jul/2018:21:23:01 +0900] "GET / HTTP/1.1" 404 1074
+127.0.0.1 - - [21/Jul/2018:21:23:45 +0900] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [21/Jul/2018:21:24:25 +0900] "GET /deliveryQR/connection_test.jsp HTTP/1.1" 500 2500
+127.0.0.1 - - [21/Jul/2018:21:26:42 +0900] "GET / HTTP/1.1" 404 1074

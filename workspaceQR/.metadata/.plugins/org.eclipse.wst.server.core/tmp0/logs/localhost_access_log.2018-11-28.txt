@@ -1,0 +1,12 @@
+127.0.0.1 - - [28/Nov/2018:13:38:31 +0900] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [28/Nov/2018:13:38:34 +0900] "GET /deliveryQR/layoutTest.jsp HTTP/1.1" 200 4702
+0:0:0:0:0:0:0:1 - - [28/Nov/2018:13:38:35 +0900] "GET /deliveryQR/images/background.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [28/Nov/2018:13:38:36 +0900] "GET /favicon.ico HTTP/1.1" 404 1085
+203.244.145.214 - - [28/Nov/2018:13:38:52 +0900] "POST /deliveryQR/selectidPage.jsp?name=0bd5608e3896d78a HTTP/1.1" 200 22
+0:0:0:0:0:0:0:1 - - [28/Nov/2018:14:04:15 +0900] "GET /deliveryQR/layoutTest.jsp HTTP/1.1" 200 4702
+203.244.145.214 - - [28/Nov/2018:17:31:55 +0900] "POST /deliveryQR/selectPage.jsp?phoneNumber=01068726654&password=1234 HTTP/1.1" 200 352
+203.244.145.214 - - [28/Nov/2018:17:31:55 +0900] "POST /deliveryQR/selectPage.jsp?phoneNumber=01068726654&password=1234 HTTP/1.1" 200 352
+203.244.145.214 - - [28/Nov/2018:17:31:57 +0900] "POST /deliveryQR/selectProductPage.jsp?phoneNumber=01068726654&password=1234&product=%EB%AA%A8%EC%B0%8C%EB%AA%A8%EC%B0%8C HTTP/1.1" 200 359
+0:0:0:0:0:0:0:1 - - [28/Nov/2018:18:12:54 +0900] "POST /deliveryQR/delivery.qr HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [28/Nov/2018:18:12:54 +0900] "GET /deliveryQR/qrcheck.qr HTTP/1.1" 200 3662
+0:0:0:0:0:0:0:1 - - [28/Nov/2018:18:12:54 +0900] "GET /deliveryQR/images/2.png HTTP/1.1" 200 2300

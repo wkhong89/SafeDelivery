@@ -1,0 +1,14 @@
+127.0.0.1 - - [05/Sep/2018:14:57:55 +0900] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [05/Sep/2018:14:57:56 +0900] "GET /deliveryQR/layoutTest.jsp HTTP/1.1" 200 4292
+0:0:0:0:0:0:0:1 - - [05/Sep/2018:14:57:56 +0900] "GET /deliveryQR/images/back.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [05/Sep/2018:14:57:56 +0900] "GET /deliveryQR/images/safe.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [05/Sep/2018:14:58:22 +0900] "POST /deliveryQR/delivery.qr HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [05/Sep/2018:14:58:22 +0900] "GET /deliveryQR/qrcheck.qr HTTP/1.1" 200 3913
+0:0:0:0:0:0:0:1 - - [05/Sep/2018:14:58:22 +0900] "GET /deliveryQR/images/4.png HTTP/1.1" 200 2298
+172.29.126.90 - - [05/Sep/2018:14:58:30 +0900] "GET /deliveryQR/test.jsp?post_id=4 HTTP/1.1" 302 -
+172.29.126.90 - - [05/Sep/2018:14:58:31 +0900] "POST /deliveryQR/connection_test.jsp?userid=4&name=351f36ad3cf2465c HTTP/1.1" 200 22
+0:0:0:0:0:0:0:1 - - [05/Sep/2018:14:58:34 +0900] "GET /deliveryQR/cheakAndroidID.qr HTTP/1.1" 200 2490
+0:0:0:0:0:0:0:1 - - [05/Sep/2018:14:58:34 +0900] "GET /deliveryQR/images/frame.png HTTP/1.1" 200 2308
+172.29.126.90 - - [05/Sep/2018:14:58:45 +0900] "POST /deliveryQR/selectidPage.jsp?name=351f36ad3cf2465c HTTP/1.1" 200 65
+172.29.126.90 - - [05/Sep/2018:14:58:45 +0900] "POST /deliveryQR/selectPage.jsp?phoneNumber=01065450000&password=1234 HTTP/1.1" 200 329
+172.29.126.90 - - [05/Sep/2018:14:58:48 +0900] "POST /deliveryQR/selectProductPage.jsp?phoneNumber=01065450000&password=1234&product=%EA%BF%80%EB%B0%B0100%EB%B0%95%EC%8A%A4 HTTP/1.1" 200 320

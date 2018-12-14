@@ -1,0 +1,5 @@
+127.0.0.1 - - [30/Aug/2018:14:24:02 +0900] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [30/Aug/2018:14:24:03 +0900] "GET /deliveryQR/layoutTest.jsp HTTP/1.1" 200 4292
+0:0:0:0:0:0:0:1 - - [30/Aug/2018:14:24:03 +0900] "GET /deliveryQR/images/back.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [30/Aug/2018:14:24:03 +0900] "GET /deliveryQR/images/safe.png HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [30/Aug/2018:14:24:03 +0900] "GET /favicon.ico HTTP/1.1" 404 1085

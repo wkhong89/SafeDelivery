@@ -1,0 +1,68 @@
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ include file="OracleConnection.jsp"%>
+<%@ page import="java.util.*,java.text.*"%>
+<%@ page import="java.sql.*"%>
+<%@ page import="java.net.URLEncoder"%>
+<%@ page import="org.json.simple.*"%>
+<%
+	String userid_ = request.getParameter("userid");
+
+	String name_ = request.getParameter("name");
+
+	try {
+
+		sql = "select * from TEST_DB where USERID = ? and NAME = ?";
+
+		pstmt = con.prepareStatement(sql);
+
+		pstmt.setString(1, userid_);
+
+		pstmt.setString(2, name_);
+
+		rs = pstmt.executeQuery();
+
+		JSONArray arr = new JSONArray();
+
+		while (rs.next()) {
+
+			String num = rs.getString("NUM");
+
+			String r_user = rs.getString("R_USER");
+
+			String s_phone = rs.getString("S_PHONE");
+
+			JSONObject obj = new JSONObject();
+
+			obj.put("num", num);
+
+			obj.put("r_user", r_user);
+
+			obj.put("s_phone", s_phone);
+
+			if (obj != null) {
+
+				arr.add(obj);
+
+			}
+
+		}
+
+		out.print(arr);
+
+	} catch (SQLException se) {
+
+		out.println(se.getMessage());
+
+	} finally {
+
+		if (rs != null)
+			rs.close();
+
+		if (pstmt != null)
+			pstmt.close();
+
+		if (con != null)
+			con.close();
+
+	}
+%>

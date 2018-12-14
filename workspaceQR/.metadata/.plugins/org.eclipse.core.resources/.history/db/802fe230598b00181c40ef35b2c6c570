@@ -1,0 +1,78 @@
+<%@ page contentType="text/html; charset=euc-kr"%>
+
+<%@ include file="dbCon.jsp"%>
+
+<%@ page import="java.util.*,java.text.*"%>
+
+
+
+<%@ page import="java.sql.*"%>
+
+<%@ page import="java.net.URLEncoder"%>
+
+<%@ page import="org.json.simple.*"%>
+
+
+
+<%
+	String userid_ = request.getParameter("userid");
+
+	String name_ = request.getParameter("name");
+
+	try {
+
+		sql = "select * from TEST_DB where USERID = ? and NAME = ?";
+
+		pstmt = con.prepareStatement(sql);
+
+		pstmt.setString(1, userid_);
+
+		pstmt.setString(2, name_);
+
+		rs = pstmt.executeQuery();
+
+		JSONArray arr = new JSONArray();
+
+		while (rs.next()) {
+
+			String userid = rs.getString("USERID");
+
+			String name = rs.getString("NAME");
+
+			String age = rs.getString("AGE");
+
+			JSONObject obj = new JSONObject();
+
+			obj.put("userid", userid);
+
+			obj.put("name", name);
+
+			obj.put("age", age);
+
+			if (obj != null) {
+
+				arr.add(obj);
+
+			}
+
+		}
+
+		out.print(arr);
+
+	} catch (SQLException se) {
+
+		out.println(se.getMessage());
+
+	} finally {
+
+		if (rs != null)
+			rs.close();
+
+		if (pstmt != null)
+			pstmt.close();
+
+		if (con != null)
+			con.close();
+
+	}
+%>

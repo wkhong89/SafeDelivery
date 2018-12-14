@@ -1,0 +1,60 @@
+package action;
+
+import java.io.PrintWriter;
+import java.util.ArrayList;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import svc.DeliveryService;
+import vo.ActionForward;
+import vo.User;
+
+public class DeliveryAction implements Action {
+
+	@Override
+	public ActionForward execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		User user = new User();
+		if (request.getParameter("o_user").equals("")) {
+			user.setO_user(request.getParameter("r_user"));
+			user.setO_phone(request.getParameter("r_phone"));
+		} else {
+			user.setO_user(request.getParameter("o_user"));
+			user.setO_phone(request.getParameter("o_phone"));
+		}
+		user.setR_user(request.getParameter("r_user"));
+		user.setR_address(request.getParameter("r_address"));
+		user.setR_sub_add(request.getParameter("r_sub_add"));
+		user.setR_phone(request.getParameter("r_phone"));
+		String product = request.getParameter("product");
+		user.setProduct(product.replaceAll(" ", ""));
+		user.setS_address("경상북도 경산시 공대 5512");
+		user.setS_phone("01068720000");
+		user.setS_user("Java");
+		user.setPasswd(request.getParameter("passwd"));
+
+		ActionForward forward = null;
+		DeliveryService deliveryService = new DeliveryService();
+		int deliverySuccess = deliveryService.deliveryPro(user);
+
+		if (deliverySuccess != 0) {
+			forward = new ActionForward();
+			HttpSession session = request.getSession();
+			session.setAttribute("r_user", user.getR_user());
+			session.setAttribute("r_add",user.getR_address());
+			request.setAttribute("user", user);
+			forward.setUrl("qrcheck.qr");
+			forward.setRedirect(true);
+		} else {
+			response.setContentType("text/html;charset=UTF-8");
+			PrintWriter out = response.getWriter();
+			out.println("<script>");
+			out.println("alert('정보를 정확하게 입력해주세요')");
+			out.println("history.back()");
+			out.println("</script>");
+		}
+
+		return forward;
+	}
+}

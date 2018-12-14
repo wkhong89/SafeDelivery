@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.divCenter {
+	position: absolute;
+	width: 350px;
+	height: 320px;
+	left: 50%;
+	top: 50%;
+	margin-left: -175px;
+	margin-top: -180px;
+	text-align: center;
+}
+#qr_size{
+	width: 300px;
+	height: 300px;
+}
+</style>
+<meta charset=UTF-8>
+<title></title>
+</head>
+<body>
+	<div class="divCenter">
+		<h1>안심택배를 이용해 주셔서 감사합니다.</h1>
+		<br>
+		<p>타인이 수령을 할 경우</p>
+		<p>비밀번호를 알려주세요</p>
+		<img id = "qr_size" src="images/frame.png">
+	</div>
+</body>
+</html>

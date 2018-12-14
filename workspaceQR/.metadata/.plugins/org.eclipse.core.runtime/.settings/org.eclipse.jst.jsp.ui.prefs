@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+newFileTemplateName=New JSP(HTML5)
+org.eclipse.wst.sse.ui.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates><template autoinsert\="true" context\="jsp_new" deleted\="false" description\="JSP From HTML5" enabled\="true" name\="New JSP(HTML5)">&lt;%@ page language\="java" contentType\="text/html; charset\=UTF-8"&\#13;\r\n\tpageEncoding\="UTF-8"%&gt;&\#13;\r\n&lt;\!DOCTYPE html&gt;&\#13;\r\n&lt;html&gt;&\#13;\r\n&lt;head&gt;&\#13;\r\n&lt;style&gt;&\#13;\r\n&\#13;\r\n&lt;/style&gt;&\#13;\r\n&lt;meta charset\=UTF-8&gt;&\#13;\r\n&lt;title&gt;  &lt;/title&gt;&\#13;\r\n&lt;/head&gt;&\#13;\r\n&lt;body&gt;&\#13;\r\n\t&\#13;\r\n&lt;/body&gt;&\#13;\r\n&lt;/html&gt;</template></templates>

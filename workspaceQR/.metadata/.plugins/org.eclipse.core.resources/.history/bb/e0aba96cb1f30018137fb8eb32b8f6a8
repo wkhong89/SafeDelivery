@@ -1,0 +1,67 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8" isELIgnored="false"%>
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.divCenter {
+	position: absolute;
+	width: 350px;
+	height: 100px;
+	left: 50%;
+	top: 50%;
+	margin-left: -175px;
+	margin-top: -180px;
+	text-align: center;
+}
+.divTable{
+	position: absolute;
+	width : 350px;
+	height: 350px;
+	left : 50%;
+	top : 50%;
+	margin-left: -175px;
+	margin-top : -100px;
+	text-align: center;
+}
+.qr_size{
+	width: 200px;
+	height: 200px;
+}
+
+</style>
+<meta charset=UTF-8>
+<title></title>
+</head>
+<body>
+	<div class="divCenter">
+		<h1>안심택배를 이용해 주셔서 감사합니다.</h1>
+		<br>
+		<p>타인이 수령을 할 경우</p>
+		<p>비밀번호를 알려주세요</p>
+		<br>
+		<br>
+	</div>
+	<div class = "divTable">
+		<table >
+		<tr>
+		<td>수령인</td>
+		<td>${r_user}</td>
+		</tr>
+		<tr>
+		<td>주소</td>
+		<td>${r_add}</td>
+		</tr>
+		<tr>
+		<td><img src = "images/barcode.png"></td>
+		<td><img class = "qr_size" src="images/frame.png"></td>
+		</tr>
+		</table>
+	</div>
+</body>
+</html>

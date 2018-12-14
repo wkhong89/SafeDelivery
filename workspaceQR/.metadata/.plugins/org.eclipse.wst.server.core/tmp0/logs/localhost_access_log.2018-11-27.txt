@@ -1,0 +1,14 @@
+127.0.0.1 - - [27/Nov/2018:18:53:49 +0900] "GET / HTTP/1.1" 404 1074
+203.244.145.214 - - [27/Nov/2018:18:53:50 +0900] "POST /deliveryQR/selectidPage.jsp?name=0bd5608e3896d78a HTTP/1.1" 200 22
+0:0:0:0:0:0:0:1 - - [27/Nov/2018:18:53:55 +0900] "GET /deliveryQR/layoutTest.jsp HTTP/1.1" 200 4702
+0:0:0:0:0:0:0:1 - - [27/Nov/2018:18:53:56 +0900] "GET /favicon.ico HTTP/1.1" 404 1085
+203.244.145.214 - - [27/Nov/2018:18:54:23 +0900] "POST /deliveryQR/selectidPage.jsp?name=0bd5608e3896d78a HTTP/1.1" 200 22
+203.244.145.214 - - [27/Nov/2018:18:55:41 +0900] "POST /deliveryQR/selectidPage.jsp?name=0bd5608e3896d78a HTTP/1.1" 200 22
+127.0.0.1 - - [27/Nov/2018:19:12:43 +0900] "GET / HTTP/1.1" 404 1074
+203.244.145.214 - - [27/Nov/2018:19:12:53 +0900] "POST /deliveryQR/selectidPage.jsp?name=0bd5608e3896d78a HTTP/1.1" 200 22
+203.244.145.214 - - [27/Nov/2018:19:14:27 +0900] "POST /deliveryQR/selectPage.jsp?phoneNumber=01068726654&password=1234 HTTP/1.1" 200 352
+203.244.145.214 - - [27/Nov/2018:19:14:27 +0900] "POST /deliveryQR/selectPage.jsp?phoneNumber=01068726654&password=1234 HTTP/1.1" 200 352
+203.244.145.214 - - [27/Nov/2018:19:14:30 +0900] "POST /deliveryQR/selectProductPage.jsp?phoneNumber=01068726654&password=1234&product=%EB%AA%A8%EC%B0%8C%EB%AA%A8%EC%B0%8C HTTP/1.1" 200 359
+0:0:0:0:0:0:0:1 - - [27/Nov/2018:19:14:46 +0900] "GET /deliveryQR/layoutTest.jsp HTTP/1.1" 200 4702
+0:0:0:0:0:0:0:1 - - [27/Nov/2018:19:14:47 +0900] "GET /favicon.ico HTTP/1.1" 404 1085
+172.29.120.163 - - [27/Nov/2018:19:16:08 +0900] "POST /kobooleanWeb/insertGPS.jsp HTTP/1.1" 404 1104

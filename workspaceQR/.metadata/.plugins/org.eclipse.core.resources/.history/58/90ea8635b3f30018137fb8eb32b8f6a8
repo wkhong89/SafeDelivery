@@ -1,0 +1,312 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import controller.controller;
+
+import static db.JdbcUtil.*;
+
+import vo.DeliveryCompany;
+import vo.User;
+
+public class DeliveryDAO {
+	private static DeliveryDAO deliveryDAO;
+	private Connection con;
+
+	public static DeliveryDAO getinstance() {
+		if (deliveryDAO == null) {
+			deliveryDAO = new DeliveryDAO();
+		}
+		return deliveryDAO;
+	}
+
+	public void setConnection(Connection con) {
+		this.con = con;
+	}
+
+	public int insertDeliveryList(User user) {
+		int insertCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int num = 0;
+
+		try {
+			String sql = "select last_number from user_sequences  where sequence_name = 'DELI_SEQ' ";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				num = rs.getInt("last_number");
+			}
+
+			if (num >= 7) {
+				sql = "drop sequence DELI_SEQ ";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				sql = "create sequence deli_seq";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				sql = "alter sequence DELI_SEQ nocache";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+			}
+
+			sql = "insert into delivery(num, r_user, r_address,r_sub_add, r_phone, s_user, s_address, s_phone, o_user, o_phone, waybill, passwd, product)"
+					+ " values(deli_seq.nextval, ?, ?, ?,?, ?, ?, ?, ?, ?, waybill_seq.nextval, ?, ? )";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, user.getR_user());
+			pstmt.setString(2, user.getR_address());
+			pstmt.setString(3, user.getR_sub_add());
+			pstmt.setString(4, user.getR_phone());
+			pstmt.setString(5, user.getS_user());
+			pstmt.setString(6, user.getS_address());
+			pstmt.setString(7, user.getS_phone());
+			pstmt.setString(8, user.getO_user());
+			pstmt.setString(9, user.getO_phone());
+			pstmt.setString(10, user.getPasswd());
+			pstmt.setString(11, user.getProduct());
+			insertCount = pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return insertCount;
+	}
+
+	public User selectDeliveryList(String r_user) {
+		PreparedStatement pstmt = null;
+		User user = new User();
+		ResultSet rs = null;
+		int num = 0;
+		String sql = "select last_number from user_sequences  where sequence_name = 'DELI_SEQ' ";
+		try {
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				num = rs.getInt("last_number");
+			}
+
+			sql = "select * from delivery where num = ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, num - 1);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				user.setNum(rs.getInt("num"));
+				user.setR_user(rs.getString("r_user"));
+				user.setR_address(rs.getString("r_address"));
+				user.setR_phone(rs.getString("r_phone"));
+				user.setS_user(rs.getString("s_user"));
+				user.setS_address(rs.getString("s_address"));
+				user.setS_phone(rs.getString("s_phone"));
+				user.setO_user(rs.getString("o_user"));
+				user.setO_phone(rs.getString("o_phone"));
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return user;
+	}
+
+	public String updatePart(DeliveryCompany company) {
+		String updatePw = null;
+		int updateCount = 0;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "UPDATE delivery SET company = ? , company_name = ? WHERE waybill = ?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, company.getCompany());
+			pstmt.setString(2, company.getCompanyName());
+			pstmt.setString(3, company.getWaybill());
+			updateCount = pstmt.executeUpdate();
+
+			if (updateCount != 0) {
+				try {
+					sql = "select passwd from delivery where company_name = ? and waybill = ?";
+					pstmt = con.prepareStatement(sql);
+					pstmt.setString(1, company.getCompanyName());
+					pstmt.setString(2, company.getWaybill());
+					rs = pstmt.executeQuery();
+					if (rs.next()) {
+						updatePw = rs.getString("passwd");
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				} finally {
+					close(rs);
+					close(pstmt);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return updatePw;
+	}
+
+	public boolean selectAndroidID() {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		boolean check = false;
+		int number = 0;
+		try {
+			String sql = "select last_number from user_sequences  where sequence_name = 'UP_OF_SEQ' ";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				number = rs.getInt("last_number");
+			}
+			System.out.println(number);
+			sql = "select  android_id, waybill  from delivery  where num = ? ";
+
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, number - 1);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				int waybill = rs.getInt("waybill");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return waybill;
+	}
+
+	public boolean checkPart(DeliveryCompany company) {
+		PreparedStatement pstmt = null;
+		User user = new User();
+		ResultSet rs = null;
+		boolean check = false;
+
+		String sql = "select delivery_name  from deliverypart  where delivery_name = ? and delivery_password = ? ";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, company.getCompanyName());
+			pstmt.setString(2, company.getCompanyPassword());
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				String delivery_name = rs.getString("delivery_name");
+				if (delivery_name != null) {
+					check = true;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return check;
+	}
+
+	public boolean checkDeliveryPart(String companyName, String password) {
+		PreparedStatement pstmt = null;
+		User user = new User();
+		ResultSet rs = null;
+		boolean check = false;
+
+		String sql = "select delivery_name  from deliverypart  where delivery_name = ? and delivery_password = ? ";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, companyName);
+			pstmt.setString(2, password);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				String delivery_name = rs.getString("delivery_name");
+				if (delivery_name != null) {
+					check = true;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+
+		return check;
+	}
+
+	public int insertDelivery(String name, String companyUser, String companyPhone) {
+		int insertCount = 0;
+		PreparedStatement pstmt = null;
+		boolean successCount = false;
+		ResultSet rs = null;
+		int num = 0;
+		try {
+			String sql = "select last_number from user_sequences  where sequence_name = 'SEQ_NUM' ";
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				num = rs.getInt("last_number");
+			}
+
+			if (num >= 7) {
+				sql = "drop sequence SEQ_NUM ";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				sql = "create sequence SEQ_NUM";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+				sql = "alter sequence SEQ_NUM nocache";
+				pstmt = con.prepareStatement(sql);
+				rs = pstmt.executeQuery();
+			}
+			sql = "insert into deliverypart(num, delivery_num, delivery_phone, delivery_user, delivery_name)"
+					+ " values(seq_num.nextval, ?, ?, ?, ?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, 1);
+			pstmt.setString(2, companyPhone);
+			pstmt.setString(3, companyUser);
+			pstmt.setString(4, name);
+			insertCount = pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return insertCount;
+	}
+
+	public int selectNumDelivery() {
+		PreparedStatement pstmt = null;
+		User user = new User();
+		ResultSet rs = null;
+		int num = 0;
+		String sql = "select last_number from user_sequences  where sequence_name = 'SEQ_NUM' ";
+		try {
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				num = rs.getInt("last_number");
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return num;
+	}
+}
